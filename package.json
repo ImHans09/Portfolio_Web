@@ -1,0 +1,20 @@
+{
+  "name": "portfolio_web",
+  "version": "1.0.0",
+  "description": "Portfolio web is personal web branding for displaying my projects and work experiences.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Muhammad Rayhan Permana",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "hbs": "^4.2.0"
+  }
+}

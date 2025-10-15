@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand p-0" href="#">Logo</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end gap-3 mt-2 mt-lg-0" id="navbarSupportedContent">
+        <ul class="navbar-nav gap-1 mb-2 mb-lg-0">
+          <li class="nav-item rounded-2">
+            <a class="nav-link px-2 px-md-3" aria-current="page" href="#">Tech Stack</a>
+          </li>
+          <li class="nav-item rounded-2">
+            <a class="nav-link px-2 px-md-3" aria-current="page" href="#">Experience</a>
+          </li>
+          <li class="nav-item rounded-2">
+            <a class="nav-link px-2 px-md-3" aria-current="page" href="#">Projects</a>
+          </li>
+        </ul>
+        <div class="d-flex flex-wrap flex-md-nowrap gap-1 gap-md-2">
+          <a href="#" class="col-12 col-md-auto flex-fill navbar-button navbar-button-linkedin d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-2 px-lg-3 py-2">
+            <i class="fa-brands fa-square-linkedin"></i>
+            <span class="navbar-button-text">Find Me</span>
+          </a>
+          <a href="#" class="col-12 col-md-auto flex-fill navbar-button navbar-button-download-cv d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-2 py-2">
+            <i class="fa-solid fa-download"></i>
+            <span class="navbar-button-text">Download CV</span>
+          </a>
+          <a href="#" class="col-12 col-md-auto flex-fill outline-button navbar-button-login d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-3 py-2">
+            <span class="navbar-button-text">Login</span>
+          </a>
+          {{!-- <a href="#" class="col-12 col-md-auto flex-fill navbar-button-logout d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-3 py-2">
+            <span class="navbar-button-text">Logout</span>
+          </a> --}}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content container-fluid d-flex justify-content-center w-full">
+    <div class="main-body d-flex flex-column">
+      <!-- Hero -->
+      <div class="hero row justify-content-center align-items-center gap-4 gap-lg-5">
+        <!-- Left Side -->
+        <div class="col-12 col-lg-auto d-flex justify-content-center">
+          <img src="{{imagePath}}" class="profile-image rounded-4" alt="Profile Picture">
+        </div>
+        <!-- Right Side -->
+        <div class="col-12 col-lg-7 col-xl-6 d-flex flex-column gap-4 mt-4 mt-lg-0">
+          <div class="d-flex flex-column gap-3">
+            <h1 class="headline-text text-center text-lg-start m-0 p-0">{{headline}}👋</h1>
+            <h3 class="subheadline-text text-center text-lg-start m-0 p-0">{{role}}</h3>
+          </div>
+          <p class="text-center text-lg-start">{{summary}}</p>
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex justify-content-center justify-content-lg-start align-items-center gap-2">
+              <i class="icon-location fa-solid fa-location-dot"></i>
+              <span class="info-text">{{location}}</span>
+            </div>
+            <div class="d-flex justify-content-center justify-content-lg-start align-items-center gap-2">
+              <i class="icon-status {{statusIconFlag}} fa-solid fa-circle"></i>
+              <span class="info-text">{{message}}</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column flex-md-row justify-content-center justify-content-lg-start gap-3 mt-3">
+            <a href="#" class="navbar-button navbar-button-linkedin d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-2 px-md-3 py-2">
+              <i class="fa-brands fa-square-linkedin"></i>
+              <span class="navbar-button-text">Find Me</span>
+            </a>
+            <a href="#" class="navbar-button navbar-button-download-cv d-flex justify-content-center align-items-center gap-2 text-decoration-none rounded-2 px-2 py-2">
+              <i class="fa-solid fa-download"></i>
+              <span class="navbar-button-text">Download CV</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End Hero -->
+      <!-- Tech Stack Section -->
+      <div class="ts-section d-flex flex-column gap-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="m-0 p-0">Tech Stack<span class="d-none d-lg-inline"> - Tools I Use Everyday</span></h2>
+          <button class="d-flex align-items-center gap-2 rounded-5 border-0">
+            <i class="fa-solid fa-plus"></i>
+            <span class="d-none d-sm-flex">Add tech stack</span>
+          </button>
+        </div>
+      </div>
+      <!-- End Tech Stack Section -->
+      <!-- Work Experiences Section -->
+      <div class="we-section d-flex flex-column gap-5">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="m-0 p-0">Work Experiences</h2>
+          <button class="d-flex align-items-center gap-2 rounded-5 border-0">
+            <i class="fa-solid fa-plus"></i>
+            <span class="d-none d-sm-flex">Add work experience</span>
+          </button>
+        </div>
+        <div class="content-list d-flex flex-column">
+          <div class="row justify-content-center gap-3 gap-md-2 px-4">
+            <div class="col-12 col-md-auto py-2">
+              <img src="images/app_logo.png" class="rounded-circle" alt="Company Logo">
+            </div>
+            <div class="col-12 col-md-10 d-flex flex-column flex-fill gap-3">
+              <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center gap-2">
+                <div class="d-flex flex-column">
+                  <h4 class="m-0 p-0">Mentor Full Stack Web Developer</h4>
+                  <h5 class="m-0 p-0">Dumbways Indonesia</h5>
+                </div>
+                <span>Sept 2025 - Present</span>
+              </div>
+              <div class="d-flex flex-column gap-1">
+                <ul class="ps-3">
+                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eligendi dolor laudantium laborum alias aperiam</li>
+                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eligendi dolor laudantium laborum alias aperiam</li>
+                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eligendi dolor laudantium laborum alias aperiam</li>
+                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eligendi dolor laudantium laborum alias aperiam</li>
+                </ul>
+                <div class="d-flex flex-wrap gap-3">
+                  <div class="project-tech rounded-5">
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="project-tech rounded-5">
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="project-tech rounded-5">
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="project-tech rounded-5">
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="project-tech rounded-5">
+                    <span>JavaScript</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Work Experiences Section -->
+      <!-- My Projects Section -->
+      <div class="mp-section d-flex flex-column gap-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="m-0 p-0">My Projects</h2>
+          <button class="d-flex align-items-center gap-2 rounded-5 border-0">
+            <i class="fa-solid fa-plus"></i>
+            <span class="d-none d-sm-flex">Add project</span>
+          </button>
+        </div>
+      </div>
+      <!-- End My Projects Section -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+</body>
+</html>

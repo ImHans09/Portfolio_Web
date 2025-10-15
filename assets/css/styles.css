@@ -1,0 +1,398 @@
+:root {
+  --dark: #111827;
+  --dark-light: #4b5563;
+  --dark-hover: #1f2937;
+  --light: #f9fafb;
+  --light-hover: #e5e7eb;
+  --grey: #6b7280;
+  --success: #16a34a;
+  --danger: #dc3545;
+  --danger-hover: #b91c1c;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-layer-light: #d1d5db;
+  --bg-layer-primary: #0d6efd;
+}
+
+body {
+  background-color: var(--light);
+}
+
+.navbar {
+  background-color: var(--light);
+  font-family: "Poppins", sans-serif;
+  padding: 0 0;
+}
+
+.navbar .container-fluid {
+  padding-left: 0.6rem;
+  padding-top: 0.4rem;
+  padding-right: 0.6rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar .navbar-brand {
+  color: var(--dark);
+  font-size: 32px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navbar .navbar-toggler {
+  background-color: transparent;
+  border-radius: 8px;
+  margin-right: -0.4rem;
+  padding: 12px 12px;
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-toggler:hover {
+  background-color: var(--light-hover);
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.navbar .navbar-toggler i {
+  color: var(--dark);
+  font-size: 20px;
+}
+
+.navbar .navbar-nav .nav-item {
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-nav .nav-item:hover {
+  background-color: var(--light-hover);
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: var(--dark);
+}
+
+.navbar-button {
+  color: var(--light);
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-button-text {
+  font-size: 14px;
+  padding: 0 0;
+}
+
+.navbar-button-linkedin {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.navbar-button-linkedin:hover {
+  background-color: var(--primary-hover);
+  transition: all 0.3s ease;
+}
+
+.navbar-button-download-cv {
+  background-color: var(--dark);
+  border: 2px solid var(--dark);
+}
+
+.navbar-button-download-cv:hover {
+  background-color: var(--dark-hover);
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-button-login {
+  border-color: var(--dark);
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.navbar .navbar-button-logout {
+  background-color: var(--danger);
+  border: 2px solid var(--danger);
+  color: var(--light);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-button-logout:hover {
+  background-color: var(--danger-hover);
+  transition: all 0.3s ease;
+}
+
+.outline-button {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.outline-button:hover {
+  background-color: var(--light-hover);
+  transition: all 0.3s ease;
+}
+
+.main-content {
+  font-family: "Alan Sans", sans-serif;
+  margin-left: 0;
+  margin-top: 62px;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding-left: 1.5rem;
+  padding-top: 5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.main-body {
+  gap: 6rem;
+}
+
+.profile-image {
+  width: 16rem;
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+.main-content .hero .headline-text {
+  color: var(--dark);
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.main-content .hero .subheadline-text {
+  color: var(--dark-light);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.main-content .hero p {
+  color: var(--dark-light);
+  padding: 0 1.5rem;
+}
+
+.main-content .hero .info-text {
+  color: var(--dark-light);
+  font-size: 15px;
+}
+
+.main-content .hero .icon-location {
+  color: var(--dark-light);
+}
+
+.main-content .hero .icon-status {
+  font-size: 8px;
+}
+
+.available {
+  color: var(--success);
+}
+
+.unavailable {
+  color: var(--danger);
+}
+
+.ts-section h2,
+.we-section h2,
+.mp-section h2 {
+  font-weight: 700;
+}
+
+.ts-section button,
+.we-section button,
+.mp-section button {
+  background-color: transparent;
+  color: var(--grey);
+  font-size: 14px;
+  margin-right: -9px;
+  padding: 10px 10px;
+  transition: all 0.3s ease;
+}
+
+.ts-section button:hover,
+.we-section button:hover,
+.mp-section button:hover {
+  background-color: var(--light-hover);
+  color: var(--dark-light);
+  transition: all 0.3s ease;
+}
+
+.we-section .content-list {
+  gap: 5rem;
+}
+
+.we-section img {
+  height: 80px;
+  object-fit: contain;
+  width: 80px;
+}
+
+.we-section h4 {
+  color: var(--dark);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.we-section h5 {
+  color: var(--success);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.we-section span {
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.we-section ul {
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.we-section .project-tech {
+  background-color: var(--light-hover);
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 3px;
+}
+
+.we-section .project-tech span {
+  color: var(--dark-light);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+@media (min-width: 576px) {
+  .main-content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .main-content .hero p {
+    padding: 0 4rem;
+  }
+
+  .ts-section button,
+  .we-section button,
+  .mp-section button {
+    padding: 6px 12px;
+    margin-right: -7px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    overflow-x: hidden;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .main-body {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar .container-fluid {
+    padding-left: 3rem;
+    padding-top: 0.7rem;
+    padding-right: 3rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .navbar .navbar-nav .nav-link {
+    color: var(--grey);
+  }
+
+  .navbar .navbar-nav .nav-item .nav-link:hover {
+    color: var(--dark);
+  }
+
+  .main-body {
+    max-width: 930px;
+  }
+
+  .profile-image {
+    width: 18rem;
+    transition: all 0.2s ease;
+  }
+
+  .profile-image:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+
+  .main-content .hero .headline-text {
+    font-size: 56px;
+  }
+
+  .main-content .hero .subheadline-text {
+    font-size: 26px;
+  }
+
+  .main-content .hero p {
+    font-size: 18px;
+    padding: 0 0;
+  }
+
+  .ts-section,
+  .we-section,
+  .mp-section {
+    padding: 0 1rem;
+  }
+
+  .ts-section h2,
+  .we-section h2,
+  .mp-section h2 {
+    font-size: 32px;
+  }
+
+  .ts-section button span,
+  .we-section button span,
+  .mp-section button span {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar .container-fluid {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .main-body {
+    max-width: 1200px;
+  }
+
+  .ts-section,
+  .we-section,
+  .mp-section {
+    padding: 0 8rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .main-body {
+    max-width: 1450px;
+  }
+
+  .ts-section,
+  .we-section,
+  .mp-section {
+    padding: 0 12rem;
+  }
+}
