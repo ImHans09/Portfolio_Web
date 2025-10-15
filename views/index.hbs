@@ -55,11 +55,9 @@
     <div class="main-body d-flex flex-column">
       <!-- Hero -->
       <div class="hero row justify-content-center align-items-center gap-4 gap-lg-5">
-        <!-- Left Side -->
         <div class="col-12 col-lg-auto d-flex justify-content-center">
           <img src="{{imagePath}}" class="profile-image rounded-4" alt="Profile Picture">
         </div>
-        <!-- Right Side -->
         <div class="col-12 col-lg-7 col-xl-6 d-flex flex-column gap-4 mt-4 mt-lg-0">
           <div class="d-flex flex-column gap-3">
             <h1 class="headline-text text-center text-lg-start m-0 p-0">{{headline}}👋</h1>
@@ -98,16 +96,28 @@
             <span class="d-none d-sm-flex">Add tech stack</span>
           </button>
         </div>
+        <div class="empty-section d-flex justify-content-center">
+          <div class="d-flex flex-column">
+            <img src="images/img_empty_01.png" alt="Empty Image">
+            <span>Add new technology you use currently.</span>
+          </div>
+        </div>
       </div>
       <!-- End Tech Stack Section -->
       <!-- Work Experiences Section -->
-      <div class="we-section d-flex flex-column gap-5">
+      <div class="we-section d-flex flex-column gap-5 mb-5">
         <div class="d-flex justify-content-between align-items-center">
           <h2 class="m-0 p-0">Work Experiences</h2>
           <button class="d-flex align-items-center gap-2 rounded-5 border-0">
             <i class="fa-solid fa-plus"></i>
             <span class="d-none d-sm-flex">Add work experience</span>
           </button>
+        </div>
+        <div class="empty-section d-flex justify-content-center">
+          <div class="d-flex flex-column">
+            <img src="images/img_empty_02.png" alt="Empty Image">
+            <span>Work experiences are still empty.</span>
+          </div>
         </div>
         <div class="content-list d-flex flex-column">
           <div class="row justify-content-center gap-3 gap-md-2 px-4">
@@ -153,13 +163,48 @@
       </div>
       <!-- End Work Experiences Section -->
       <!-- My Projects Section -->
-      <div class="mp-section d-flex flex-column gap-4">
+      <div class="mp-section d-flex flex-column gap-5">
         <div class="d-flex justify-content-between align-items-center">
           <h2 class="m-0 p-0">My Projects</h2>
           <button class="d-flex align-items-center gap-2 rounded-5 border-0">
             <i class="fa-solid fa-plus"></i>
             <span class="d-none d-sm-flex">Add project</span>
           </button>
+        </div>
+        <!-- Empty Space -->
+        {{!-- <div class="empty-section d-flex justify-content-center">
+          <div class="d-flex flex-column">
+            <img src="images/img_empty_03.png" alt="Empty Image">
+            <span>Projects are empty. Add new project.</span>
+          </div>
+        </div> --}}
+        <!-- End Empty Space -->
+        <!-- Project item list -->
+        <div class="d-flex flex-wrap gap-5 gap-md-4 mt-2">
+          <div class="project-card card rounded-4">
+            <img src="images/sample_academic_information_system.png" class="card-img-top rounded-top-4" alt="...">
+            <div class="card-body d-flex flex-column gap-2 p-4">
+              <h5 class="card-title">Project Name</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+              <div class="d-flex flex-wrap gap-3">
+                <div class="project-tech rounded-5">
+                  <span>JavaScript</span>
+                </div>
+                <div class="project-tech rounded-5">
+                  <span>JavaScript</span>
+                </div>
+                <div class="project-tech rounded-5">
+                  <span>JavaScript</span>
+                </div>
+                <div class="project-tech rounded-5">
+                  <span>JavaScript</span>
+                </div>
+                <div class="project-tech rounded-5">
+                  <span>JavaScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- End My Projects Section -->
