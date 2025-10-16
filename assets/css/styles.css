@@ -210,9 +210,9 @@ body {
   font-weight: 700;
 }
 
-.ts-section button,
-.we-section button,
-.mp-section button {
+.ts-section .add-button,
+.we-section .add-button,
+.mp-section .add-button {
   background-color: transparent;
   color: var(--grey);
   font-size: 14px;
@@ -221,9 +221,9 @@ body {
   transition: all 0.3s ease;
 }
 
-.ts-section button:hover,
-.we-section button:hover,
-.mp-section button:hover {
+.ts-section .add-button:hover,
+.we-section .add-button:hover,
+.mp-section .add-button:hover {
   background-color: var(--light-hover);
   color: var(--dark-light);
   transition: all 0.3s ease;
@@ -364,6 +364,38 @@ body {
   font-size: 18px;
 }
 
+.content-body {
+  font-family: "Alan Sans", sans-serif;
+  margin-top: 62px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.content-body img {
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.content-body legend {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.content-body span {
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.content-body .submit-button {
+  background-color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+.content-body .submit-button:hover {
+  background-color: var(--dark-hover);
+  transition: all 0.3s ease;
+}
+
 footer {
   border-top: 1px solid #6b728049;
   font-family: "Alan Sans", sans-serif;
@@ -377,6 +409,20 @@ footer {
   padding-bottom: 1rem;
 }
 
+footer a {
+  color: var(--dark-light);
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+footer .social-section a {
+  font-size: 24px;
+}
+
 @media (min-width: 576px) {
   .main-content {
     padding-left: 2.5rem;
@@ -387,9 +433,9 @@ footer {
     padding: 0 4rem;
   }
 
-  .ts-section button,
-  .we-section button,
-  .mp-section button {
+  .ts-section .add-button,
+  .we-section .add-button,
+  .mp-section .add-button {
     padding: 6px 12px;
     margin-right: -7px;
   }
@@ -502,9 +548,9 @@ footer {
     font-size: 32px;
   }
 
-  .ts-section button span,
-  .we-section button span,
-  .mp-section button span {
+  .ts-section .add-button span,
+  .we-section .add-button span,
+  .mp-section .add-button span {
     font-size: 16px;
   }
 
@@ -514,7 +560,8 @@ footer {
   }
 
   .footer-body {
-    max-width: 980px;
+    max-width: 910px;
+    width: 100%;
   }
 
   /* .mp-section .item-card {
@@ -538,9 +585,9 @@ footer {
     padding: 0 8rem;
   }
 
-  /* .footer-body {
-    max-width: 1200px;
-  } */
+  .footer-body {
+    max-width: 1000px;
+  }
 
   /* .mp-section .item-card {
     max-width: 521px;
@@ -558,7 +605,7 @@ footer {
     padding: 0 12rem;
   }
 
-  /* .footer-body {
-    max-width: 1450px;
-  } */
+  .footer-body {
+    max-width: 1200px;
+  }
 }
