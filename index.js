@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import dotenv from 'dotenv';
 import express from 'express';
 import isEmail from 'validator/lib/isEmail.js';
@@ -17,6 +18,9 @@ const port = 3000;
 // Set environment configuration
 dotenv.config();
 
+// Set dayjs locale
+dayjs.locale('en');
+
 // Instantiate connection pool
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -29,6 +33,9 @@ const pool = new Pool({
 
 // Work experience image local path
 const workImagePath = './assets/uploads/work_images';
+
+// Project image local path
+const projectImagePath = './assets/uploads/project_images';
 
 // Work experience image storage initiliaze
 const workImageStorage = multer.diskStorage({
@@ -44,8 +51,25 @@ const workImageStorage = multer.diskStorage({
   }
 });
 
+// Project image storage initiliaze
+const projectImageStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    if (!existsSync(projectImagePath)) {
+      mkdirSync(projectImagePath, { recursive: true });
+    }
+    
+    cb(null, projectImagePath);
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+  }
+});
+
 // Work experience image upload config
 const workImageUpload = multer({ storage: workImageStorage });
+
+// Project image upload config
+const projectImageUpload = multer({ storage: projectImageStorage });
 
 // Set hbs view engine
 app.set('view engine', 'hbs');
@@ -82,16 +106,41 @@ app.get('/add-work-experience', getAddWorkExperiencePage);
 // Route for adding new work experience
 app.post('/add-new-work', workImageUpload.single('companyLogo'), addNewWorkExperience);
 
+// Route for deleting work experience
+app.post('/delete-work/:id', deleteWorkExperience);
+
+// Route to Project Detail Page for adding
+app.get('/add-project', getAddProjectPage);
+
+// Route for adding new project
+app.post('/add-new-project', projectImageUpload.single('projectImage'), addNewProject);
+
+// Route for deleting project
+app.post('/delete-project/:id', deleteProject);
+
 async function getHomePage(req, res) {
   try {
+    const projectStatus = false;
+    const message = projectStatus ? 'Currently working on a project' : 'Available for new projects';
+    const statusIconFlag = projectStatus ? 'unavailable' : 'available';
     const fetchWorksQuery = {
       name: 'fetch-all-works',
       text: 'SELECT * FROM works ORDER BY end_date DESC'
     };
+    const fetchProjectsQuery = {
+      name: 'fetch-all-projects',
+      text: 'SELECT * FROM projects ORDER BY name ASC'
+    };
     const works = await pool.query(fetchWorksQuery);
-    const projectStatus = false;
-    const message = projectStatus ? 'Currently working on a project' : 'Available for new projects';
-    const statusIconFlag = projectStatus ? 'unavailable' : 'available';
+    const projects = await pool.query(fetchProjectsQuery);
+
+    if (works.rowCount > 0) {
+      works.rows.forEach((item) => {
+        item.start_date = dayjs(item.start_date).format('MMM YYYY');
+        item.end_date = dayjs(item.end_date).format('MMM YYYY');
+      });
+    }
+
     const data = {
       email: req.session.user?.email || '',
       title: 'Muhammad Rayhan - Portfolio Web',
@@ -102,7 +151,8 @@ async function getHomePage(req, res) {
       imagePath: 'images/img_github_profile.jpg',
       message: message,
       statusIconFlag: statusIconFlag,
-      works: works.rows
+      works: works.rows,
+      projects: projects.rows
     };
 
     res.render('index', data);
@@ -199,7 +249,7 @@ function getAddWorkExperiencePage(req, res) {
 
     const data = {
       title: 'Work Experience Detail',
-      headline: 'Fill work detail',
+      headline: 'Add work detail',
       imagePath: 'images/img_work_illustration.png',
       email: adminEmail
     };
@@ -228,6 +278,123 @@ async function addNewWorkExperience(req, res) {
     await pool.query(query);
 
     res.redirect('/')
+  } catch (error) {
+    console.error(error);
+    res.status(400).send('Bad Request');
+  }
+}
+
+async function deleteWorkExperience(req, res) {
+  try {
+    const workId = Number(req.params.id);
+
+    if (typeof workId !== 'number') {
+      return res.redirect('/');
+    }
+
+    const fetchWorkQuery = {
+      name: 'fetch-work',
+      text: "SELECT image_name FROM works WHERE id = $1",
+      values: [workId]
+    };
+    const work = await pool.query(fetchWorkQuery);
+
+    unlink(`assets/uploads/work_images/${work.rows[0].image_name}`, (error) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+    });
+
+    const deleteWorkQuery = {
+      name: 'delete-work',
+      text: "DELETE FROM works WHERE id = $1",
+      values: [workId]
+    };
+
+    await pool.query(deleteWorkQuery);
+
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(400).send('Bad Request');
+  }
+}
+
+function getAddProjectPage(req, res) {
+  try {
+    const adminEmail = req.session.user?.email || '';
+
+    if (adminEmail.length === 0) {
+      return res.redirect('/');
+    }
+
+    const data = {
+      title: 'Project Detail',
+      headline: 'Add new project',
+      imagePath: 'images/img_project_illustration.png',
+      email: adminEmail
+    };
+
+    res.render('project_detail', data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
+async function addNewProject(req, res) {
+  try {
+    const { projectName, description, techStack, githubLink, demoLink } = req.body;
+    const imageName = req.file.filename;
+    const cleanTechStack = techStack.replaceAll(' ', '');
+    const arrayTechStack = cleanTechStack.split(',');
+    const query = {
+      name: 'insert-new-project',
+      text: "INSERT INTO projects (name, description, technologies, github_link, live_demo_link, image_name) VALUES ($1, $2, $3, $4, $5, $6)",
+      values: [projectName, description, arrayTechStack, githubLink, demoLink, imageName]
+    };
+
+    await pool.query(query);
+    
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(400).send('Bad Request');
+  }
+}
+
+async function deleteProject(req, res) {
+  try {
+    const projectId = Number(req.params.id);
+
+    if (typeof projectId !== 'number') {
+      return res.redirect('/');
+    }
+
+    const fetchProjectQuery = {
+      name: 'fetch-project',
+      text: "SELECT image_name FROM projects WHERE id = $1",
+      values: [projectId]
+    };
+    const project = await pool.query(fetchProjectQuery);
+
+    unlink(`assets/uploads/project_images/${project.rows[0].image_name}`, (error) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+    });
+
+    const deleteProjectQuery = {
+      name: 'delete-project',
+      text: "DELETE FROM projects WHERE id = $1",
+      values: [projectId]
+    };
+
+    await pool.query(deleteProjectQuery);
+
+    res.redirect('/');
   } catch (error) {
     console.error(error);
     res.status(400).send('Bad Request');
